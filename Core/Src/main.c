@@ -35,6 +35,9 @@
 #include "odroid_overlay.h"
 #include "bq24072.h"
 
+#include "fatfs.h"
+#include "usb_device.h"
+
 #include <string.h>
 #include <assert.h>
 #include <stdio.h>
@@ -442,6 +445,8 @@ int main(void)
   MX_DAC2_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
+  // MX_FATFS_Init();  // hhyytt msc
+  // MX_USB_DEVICE_Init(); // hhyytt msc
 
   /* Initialize interrupts */
   MX_NVIC_Init();
@@ -905,7 +910,7 @@ static void MX_OCTOSPI1_Init(void)
   hospi1.Init.SampleShifting = HAL_OSPI_SAMPLE_SHIFTING_NONE;
   hospi1.Init.DelayHoldQuarterCycle = HAL_OSPI_DHQC_DISABLE;
   hospi1.Init.ChipSelectBoundary = 0;
-  hospi1.Init.ClkChipSelectHighTime = 0;
+  hospi1.Init.ChipSelectHighTime = 0;
   hospi1.Init.DelayBlockBypass = HAL_OSPI_DELAY_BLOCK_BYPASSED;
   hospi1.Init.MaxTran = 0;
   hospi1.Init.Refresh = 0;

@@ -39,6 +39,26 @@ Core/Src/stm32h7xx_hal_msp.c \
 Core/Src/stm32h7xx_it.c \
 Core/Src/system_stm32h7xx.c
 
+MSC_C_SOURCES =  \
+FATFS/App/fatfs.c \
+FATFS/Target/user_diskio.c \
+USB_DEVICE/App/usb_device.c \
+USB_DEVICE/App/usbd_desc.c \
+USB_DEVICE/App/usbd_storage_if.c \
+USB_DEVICE/Target/usbd_conf.c \
+Middlewares/Third_Party/FatFs/src/diskio.c \
+Middlewares/Third_Party/FatFs/src/ff.c \
+Middlewares/Third_Party/FatFs/src/ff_gen_drv.c \
+Middlewares/Third_Party/FatFs/src/option/syscall.c \
+Middlewares/Third_Party/FatFs/src/option/cc936.c \
+Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c \
+Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c \
+Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c \
+Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c \
+Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c \
+Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c \
+Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c
+
 GNUBOY_C_SOURCES = \
 Core/Src/porting/gb/main_gb.c \
 retro-go-stm32/gnuboy-go/components/gnuboy/cpu.c \
@@ -163,6 +183,15 @@ C_INCLUDES +=  \
 -ILCD-Game-Emulator/src \
 -ILCD-Game-Emulator/src/cpus \
 -ILCD-Game-Emulator/src/gw_sys
+
+C_INCLUDES +=  \
+-IFATFS/Target \
+-IFATFS/App \
+-IUSB_DEVICE/App \
+-IUSB_DEVICE/Target \
+-IMiddlewares/Third_Party/FatFs/src \
+-IMiddlewares/ST/STM32_USB_Device_Library/Core/Inc \
+-IMiddlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc
 
 include Makefile.common
 
