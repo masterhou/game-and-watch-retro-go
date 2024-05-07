@@ -16,7 +16,7 @@ ROM_ENTRIES_TEMPLATE = """
 const retro_emulator_file_t {name}[] = {{
 {body}
 }};
-const uint32_t {name}_count = {rom_count};
+// const uint32_t {name}_count = {rom_count};
 """
 
 ROM_ENTRY_TEMPLATE = """\t{{
@@ -733,7 +733,7 @@ class ROMParser:
         self.write_if_changed(
             "build/saveflash.ld", f"__SAVEFLASH_LENGTH__ = {total_save_size};\n"
         )
-        self.write_if_changed("build/config.h", build_config)
+        # self.write_if_changed("build/config.h", build_config)
 
 
 if __name__ == "__main__":
