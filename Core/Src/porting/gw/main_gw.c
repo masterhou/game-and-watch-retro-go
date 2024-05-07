@@ -85,7 +85,7 @@ static void gw_sound_submit()
 {
 
     uint8_t volume = odroid_audio_volume_get();
-    int16_t factor = volume_tbl[volume];
+    int16_t factor = volume_tbl(volume);
 
     /** Enables the following code to track audio rendering issues **/
     /*

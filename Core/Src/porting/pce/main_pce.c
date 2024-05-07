@@ -469,7 +469,7 @@ void pce_osd_gfx_blit(bool drawFrame) {
 
 void pce_pcm_submit() {
     uint8_t volume = odroid_audio_volume_get();
-    int32_t factor = volume_tbl[volume] / 2; // Divide by 2 to prevent overflow in stereo mixing
+    int32_t factor = volume_tbl(volume) / 2; // Divide by 2 to prevent overflow in stereo mixing
     pce_snd_update(audioBuffer_pce, AUDIO_BUFFER_LENGTH_PCE );
     size_t offset = (dma_state == DMA_TRANSFER_STATE_HF) ? 0 : AUDIO_BUFFER_LENGTH_PCE;
     if (audio_mute || volume == ODROID_AUDIO_VOLUME_MIN) {

@@ -36,6 +36,7 @@ void odroid_system_emu_init(state_handler_t load, state_handler_t save, netplay_
     currentApp.gameId = 0;
     currentApp.loadState = load;
     currentApp.saveState = save;
+    currentApp.romPath = ACTIVE_FILE->name;
 
     printf("%s: Init done. GameId=%08lX\n", __func__, currentApp.gameId);
 }

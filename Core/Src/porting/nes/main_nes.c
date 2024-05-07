@@ -146,7 +146,7 @@ void nes_audio_submit(int16_t *buffer, int audioSamples)
 
     // MUST shift with at least 1 place, or it will brownout.
     uint8_t volume = odroid_audio_volume_get();
-    int32_t factor = volume_tbl[volume];
+    int32_t factor = volume_tbl(volume);
 
     if (audio_mute || (volume == ODROID_AUDIO_VOLUME_MIN)) {
         // mute
