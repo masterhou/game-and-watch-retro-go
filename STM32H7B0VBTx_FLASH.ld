@@ -205,31 +205,6 @@ SECTIONS
     __ram_exec_end__ = .;
   } >RAM AT> EXTFLASH
 
-  ._extflash :
-  {
-    . = ALIGN(4);
-    __extflash_nes_start__ = .;
-    build/core/logo*.o (.text .text* .rodata .rodata*)
-    . = ALIGN(4);
-    build/core/header*.o (.text .text* .rodata .rodata*)
-    . = ALIGN(4);
-    __extflash_end_start__ = .;
-    . = ALIGN(4);
-    __extflash_text_start__ = .;
-    *(.extflash_text)
-    . = ALIGN(4);
-    __extflash_text_end__ = .;
-    __extflash_data_start__ = .;
-    . = ALIGN(4);
-    *(.extflash_data)
-    . = ALIGN(4);
-    __extflash_data_end__ = .;
-    . = ALIGN(4K);
-    __extflash_game_rom_start__ = .;
-    *(.extflash_game_rom)
-    __extflash_game_rom_end__ = .;
-  } > EXTFLASH
-
   .overlay_nes __RAM_EMU_START__ : {
     . = ALIGN(4);
     __ram_emu_nes_start__ = .;
@@ -349,6 +324,32 @@ SECTIONS
   }
   _OVERLAY_GW_BSS_SIZE = SIZEOF(.overlay_gw_bss);
 
+  ._extflash :
+  {
+    . = ALIGN(4);
+    __extflash_nes_start__ = .;
+    build/core/rom_manager.o (.data.systems .rodata .rodata*)
+    . = ALIGN(4);
+    build/core/logo*.o (.text .text* .rodata .rodata*)
+    . = ALIGN(4);
+    build/core/header*.o (.text .text* .rodata .rodata*)
+    . = ALIGN(4);
+    __extflash_end_start__ = .;
+    . = ALIGN(4);
+    __extflash_text_start__ = .;
+    *(.extflash_text)
+    . = ALIGN(4);
+    __extflash_text_end__ = .;
+    __extflash_data_start__ = .;
+    . = ALIGN(4);
+    *(.extflash_data)
+    . = ALIGN(4);
+    __extflash_data_end__ = .;
+    . = ALIGN(4K);
+    __extflash_game_rom_start__ = .;
+    *(.extflash_game_rom)
+    __extflash_game_rom_end__ = .;
+  } > EXTFLASH
 
   /* Place this symbol after the last overlay definition */
   .overlay_end : {
